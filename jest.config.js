@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   preset: 'ts-jest/presets/default-esm',
   moduleFileExtensions: ['ts', 'js'],
   coverageReporters: ['json-summary', 'text', 'lcov'],
