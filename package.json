@@ -14,14 +14,13 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "ts-esm": "node --loader ts-node/esm",
-    "deploy": "npm run build && yarn publish",
     "lint": "eslint --ext .ts,.tsx",
     "test": "yarn test:jest",
     "test:jest": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:unimported": "unimported",
     "test:cov": "jest src --coverage",
     "test:badges": "yarn test:cov && istanbul-badges-readme",
-    "prepare": "husky install",
+    "prepare": "npm run build",
     "depcruise": "depcruise --config .dependency-cruiser.js --include-only \"^src\" --output-type dot src | dot -T svg > dependencygraph.svg",
     "release": "yarn build && yarn publish"
   },
@@ -59,5 +58,8 @@
     "tsd": "0.22.0",
     "typescript": "4.7.4",
     "unimported": "1.21.0"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
   }
 }
