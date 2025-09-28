@@ -61,5 +61,6 @@
   },
   "dependencies": {
     "ts-node": "^10.9.1"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }
