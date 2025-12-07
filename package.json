@@ -2,25 +2,33 @@
   "name": "TODO",
   "version": "0.0.0",
   "description": "TODO",
-  "access": "public",
-  "type": "module",
+  "author": "elzup",
   "license": "MIT",
+  "type": "module",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./lib/types/index.d.ts",
       "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js",
-      "types": "./lib/types/index.d.ts"
+      "require": "./lib/cjs/index.js"
     }
   },
   "repository": "elzup/TODO",
+  "bugs": {
+    "url": "https://github.com/elzup/TODO/issues"
+  },
+  "homepage": "https://github.com/elzup/TODO#readme",
+  "keywords": [
+    "utils",
+    "personal"
+  ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "clean": "rm -rf lib",
+    "clean": "rimraf lib",
     "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs && echo '{\"type\": \"commonjs\"}' > lib/cjs/package.json",
     "build:esm": "tsc --module esnext --outDir lib/esm --moduleResolution node --allowSyntheticDefaultImports",
@@ -29,46 +37,22 @@
     "lint:fix": "oxlint --fix",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "test:cov": "vitest run --coverage",
-    "test:badges": "yarn test:cov && istanbul-badges-readme",
-    "prepare": "npm run build",
-    "depcruise": "depcruise --config .dependency-cruiser.js --include-only \"^src\" --output-type dot src | dot -T svg > dependencygraph.svg",
-    "release": "yarn build && yarn publish"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "oxlint --fix",
-      "git add"
-    ]
+    "prepublishOnly": "npm run build && npm test"
   },
   "files": [
-    "lib/cjs",
-    "lib/esm",
-    "lib/types"
+    "lib/"
   ],
-  "keywords": [
-    "utils",
-    "personal"
-  ],
+  "sideEffects": false,
   "devDependencies": {
     "@elzup/tsconfig": "1.1.0",
     "@types/node": "22.18.1",
     "@vitest/coverage-v8": "^2.1.2",
     "@vitest/ui": "^2.1.2",
-    "husky": "8.0.3",
-    "lint-staged": "13.3.0",
     "oxlint": "^0.15.0",
-    "tsd": "0.33.0",
+    "rimraf": "^5.0.0",
     "typescript": "5.9.2",
-    "unimported": "1.31.1",
     "vitest": "^2.1.2"
-  },
-  "packageManager": "yarn@4.10.3"
+  }
 }
