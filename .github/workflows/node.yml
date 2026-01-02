@@ -22,23 +22,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Lint with oxlint
-        run: yarn lint
+        run: pnpm lint
       - name: Run tests
-        run: yarn test
+        run: pnpm test
       - name: Build
-        run: yarn build
-      - name: Test with Vitest
-        run: yarn test:run
+        run: pnpm build
       - name: Test coverage
-        run: yarn test:cov
+        run: pnpm test:cov
         if: matrix.node-version == '20.x'
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
