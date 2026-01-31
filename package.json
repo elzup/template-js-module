@@ -47,7 +47,7 @@
   "sideEffects": false,
   "devDependencies": {
     "@elzup/tsconfig": "1.1.0",
-    "@types/node": "24.10.4",
+    "@types/node": "24.10.9",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
     "oxlint": "^1.31.0",
