@@ -33,6 +33,8 @@
     "build:cjs": "tsc --module commonjs --outDir lib/cjs && echo '{\"type\": \"commonjs\"}' > lib/cjs/package.json",
     "build:esm": "tsc --module esnext --outDir lib/esm --moduleResolution node --allowSyntheticDefaultImports",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir lib/types",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "test": "vitest run",
@@ -46,6 +48,7 @@
   ],
   "sideEffects": false,
   "devDependencies": {
+    "@biomejs/biome": "^2.4.10",
     "@elzup/tsconfig": "1.1.0",
     "@types/node": "24.12.0",
     "@vitest/coverage-v8": "^4.0.15",
