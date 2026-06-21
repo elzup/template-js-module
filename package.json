@@ -25,7 +25,7 @@
     "personal"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "clean": "rimraf lib",
@@ -35,8 +35,10 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir lib/types",
     "format": "biome format .",
     "format:fix": "biome format --write .",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
@@ -53,7 +55,6 @@
     "@types/node": "24.12.0",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
-    "oxlint": "^1.31.0",
     "rimraf": "^6.1.2",
     "typescript": "5.9.3",
     "vitest": "^4.0.15"
