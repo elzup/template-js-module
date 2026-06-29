@@ -52,7 +52,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.10",
     "@elzup/tsconfig": "1.1.0",
-    "@types/node": "24.12.0",
+    "@types/node": "24.13.2",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
     "rimraf": "^6.1.2",
